@@ -20,6 +20,19 @@ ReKey.exe --help              Show this help
 
 After `--register`, run just `rekey` from any terminal.
 
+## Install
+
+Two options available on the [Releases](https://github.com/herm1t0/ReKey/releases) page:
+
+**Portable** (`ReKey.exe`)
+- Download, place anywhere, run `ReKey.exe --register`
+- Uninstall: `ReKey.exe --unregister --all`
+
+**Installer** (`ReKey.msi`)
+- Installs to `Program Files`, adds to system PATH automatically
+- Optional autostart with Windows
+- Uninstall via Windows Settings
+
 ## Configuration
 
 Config file: `%APPDATA%\ReKey\rekey`
