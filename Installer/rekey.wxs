@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+    <Package Name="ReKey"
+             Manufacturer="herm1t"
+             Version="1.0.0"
+             UpgradeCode="62b2b516-26fa-4e08-be63-bf7b0108f38f"
+             Scope="perMachine">
+
+        <ui:WixUI Id="WixUI_FeatureTree"/>
+
+        <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+
+        <MajorUpgrade DowngradeErrorMessage="A newer version is already installed."/>
+
+        <Media Id="1" Cabinet="ReKey.cab" EmbedCab="yes"/>
+
+        <StandardDirectory Id="ProgramFiles64Folder">
+            <Directory Id="INSTALLFOLDER" Name="ReKey"/>
+        </StandardDirectory>
+
+        <Feature Id="Main" Title="ReKey" Level="1"
+                 ConfigurableDirectory="INSTALLFOLDER"
+                 AllowAdvertise="no" AllowAbsent="no">
+
+            <Component Id="MainExe" Directory="INSTALLFOLDER"
+                       Guid="9a72e139-0766-4d29-931f-c73b885dd2ac">
+                <File Id="ReKeyExe"
+                      Name="ReKey.exe"
+                      Source="..\ReKey\bin\Release\net10.0\win-x64\publish\ReKey.exe"
+                      KeyPath="yes"/>
+            </Component>
+
+            <Component Id="EnvPath" Directory="INSTALLFOLDER"
+                       Guid="efe7a7d0-8213-42ec-85b1-ede722bb0d64">
+                <Environment Id="PathEnv"
+                             Name="PATH"
+                             Action="set"
+                             Part="last"
+                             System="yes"
+                             Value="[INSTALLFOLDER]"/>
+            </Component>
+        </Feature>
+
+        <Feature Id="AutoStart" Title="AutoStart" Level="1"
+                 Description="Launch ReKey at Windows startup">
+            <Component Id="AutoStartReg" Directory="INSTALLFOLDER"
+                       Guid="cec21bae-e5e6-4df2-ad89-d09b7386a0b9">
+                <RegistryValue Id="RunKey"
+                               Root="HKLM"
+                               Key="Software\Microsoft\Windows\CurrentVersion\Run"
+                               Name="ReKey"
+                               Value="&quot;[INSTALLFOLDER]ReKey.exe&quot;"
+                               Type="string"
+                               KeyPath="yes"/>
+            </Component>
+        </Feature>
+    </Package>
+</Wix>
