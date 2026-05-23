@@ -6,16 +6,16 @@ replaces them with configurable target keys.
 ## Usage
 
 ```
-ReKey.exe           Start background daemon (installs keyboard hook)
-ReKey.exe --kill    Signal the running instance to shut down
-ReKey.exe --status  Check if the background process is running
-ReKey.exe --reload  Signal the running instance to reload config
-ReKey.exe --config  Open config file in default editor
-ReKey.exe --register       Add current directory to user PATH
-ReKey.exe --unregister     Remove current directory from user PATH
+ReKey.exe                     Start background daemon (installs keyboard hook)
+ReKey.exe --kill              Signal the running instance to shut down
+ReKey.exe --status            Check if the background process is running
+ReKey.exe --reload            Signal the running instance to reload config
+ReKey.exe --config            Open config file in default editor
+ReKey.exe --register          Add current directory to user PATH
+ReKey.exe --unregister        Remove current directory from user PATH
 ReKey.exe --unregister --all  Remove ALL directories with ReKey.exe from PATH
-ReKey.exe --version Show version information
-ReKey.exe --help    Show this help
+ReKey.exe --version           Show version information
+ReKey.exe --help              Show this help
 ```
 
 After `--register`, run just `rekey` from any terminal.
