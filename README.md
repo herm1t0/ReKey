@@ -53,6 +53,17 @@ RAlt = Enter
 
 After editing, run `ReKey.exe --reload` to apply changes without restarting.
 
+Supported key names are defined in [`VirtualKeyCodes.cs`](ReKey/VirtualKeyCodes.cs). Covers all standard keys: modifiers (`LWin`, `RAlt`, `Ctrl`, etc.), function keys (`F1`-`F24`), letters (`A`-`Z`), digits (`D0`-`D9`), navigation keys, numpad keys, media keys, and more.
+
+### Circular rebind detection
+
+If the config contains a cycle (e.g. `A = B` and `B = A`, or longer chains like `A = B`, `B = C`, `C = A`), all entries involved in the cycle are automatically removed and logged as errors.
+
+## Logs
+
+Errors and diagnostic messages are written to `rekey.log` in the same directory as the config file:
+`%APPDATA%\ReKey\rekey.log`
+
 ## How it works
 
 Installs a `WH_KEYBOARD_LL` hook and intercepts keystrokes before they reach applications.
